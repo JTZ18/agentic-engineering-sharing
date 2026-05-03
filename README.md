@@ -1455,6 +1455,18 @@ The bigger pattern is the same as the rest of this guide:
 Browser workflow → agent learns it once → package it as a reusable skill
 ```
 
+### Tip 6: Start with a strong `CLAUDE.md` or `AGENTS.md` foundation
+
+When starting a software development project with agents, one of the highest-leverage things you can do is write a good instruction file from day one.
+
+Your `CLAUDE.md` (for Claude Code) or `AGENTS.md` (for other harnesses) is the system prompt loaded into every chat session. A well-structured instruction file gives the agent durable context about your project: conventions, architecture decisions, build commands, testing expectations, coding style, and anything else that should be consistent across sessions.
+
+You do not have to start from scratch. Andrej Karpathy maintains an excellent example of what a well-crafted instruction file looks like:
+
+**[forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)**
+
+Use it as a reference template and adapt it to your own project.
+
 ---
 
 ## 16. Global skills vs project-scoped skills
@@ -1631,6 +1643,7 @@ Design workflows that let agents repeatedly complete tasks well.
 - K-Dense AI Scientific Agent Skills — https://github.com/K-Dense-AI/scientific-agent-skills
 - Addy Osmani Agent Skills — https://github.com/addyosmani/agent-skills
 - Agency Agents — https://github.com/msitarzewski/agency-agents
+- Andrej Karpathy Skills (CLAUDE.md reference) — https://github.com/forrestchang/andrej-karpathy-skills
 
 ### Non-software skill examples
 
