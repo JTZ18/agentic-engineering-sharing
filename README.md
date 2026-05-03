@@ -1093,7 +1093,7 @@ That was enough to climb the leaderboard.
 The score moved roughly like this:
 
 ```text
-350 → 500 → 350 → 600
+350 → 500 → 250 → 600 → 550
 ```
 
 It was not a smooth climb.
