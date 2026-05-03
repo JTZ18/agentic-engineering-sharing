@@ -1,5 +1,7 @@
 # Agentic Engineering Sharing
 
+**Presentation deck:** https://jtz18.github.io/agentic-engineering-sharing/
+
 *A practical field guide to AI agentic coding, skills, plugins, subagents, and workflow design.*
 
 This README-style article was prepared as a companion resource for a talk on **AI agentic coding** — how to think about coding agents, how they use tools, why skills/plugins matter, and how to start building your own repeatable agent workflows.
