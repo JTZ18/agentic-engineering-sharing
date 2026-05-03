@@ -1391,6 +1391,45 @@ Let agents read the relevant files when needed.
 Do not rely on one giant chat to remember everything.
 ```
 
+### Tip 5: Use Playwright CLI for visible browser agents
+
+If you are interested in agents that operate browsers, the setup I have found to work best is:
+
+> Ask the agent to use `playwright-cli` to interact with a live headed browser session.
+
+A **headed** browser session means you can actually see what the agent is doing.
+
+That matters because browser agents can otherwise feel like black boxes. When the browser is visible, you can watch the agent:
+
+- Navigate pages
+- Click buttons
+- Fill forms
+- Search marketplaces
+- Inspect results
+- Recover from UI mistakes
+
+This is especially useful for workflows like:
+
+- Shopping research
+- Web app testing
+- Form filling
+- Browser-based data collection
+- Debugging login or UI flows
+- Teaching an agent how to use a specific website
+
+To install it, you can simply send the GitHub repo to your agent and ask it to install the tool for you:
+
+```text
+Install playwright-cli from this repo and use it to control a headed browser session:
+https://github.com/microsoft/playwright-cli
+```
+
+The bigger pattern is the same as the rest of this guide:
+
+```text
+Browser workflow → agent learns it once → package it as a reusable skill
+```
+
 ---
 
 ## 16. Global skills vs project-scoped skills
@@ -1571,6 +1610,10 @@ Design workflows that let agents repeatedly complete tasks well.
 - Karpathy Autoresearch — https://github.com/karpathy/autoresearch
 - Karpathy LLM Wiki gist — https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
 - Rohit LLM Wiki gist — https://gist.github.com/rohitg00/2067ab416f7bbe447c1977edaaa681e2
+
+### Browser agents
+
+- Playwright CLI — https://github.com/microsoft/playwright-cli
 
 ---
 
