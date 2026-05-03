@@ -31,6 +31,7 @@ The core thesis:
   - [11.4 Salesforce business relations sales skills](#114-salesforce-business-relations-sales-skills)
   - [11.5 Corporate banking relationship manager skills](#115-corporate-banking-relationship-manager-skills)
 - [12. Karpathy’s autoresearch and the Three-File Contract](#12-karpathys-autoresearch-and-the-three-file-contract)
+  - [12.1 Case study: AWS Agentic AI Hackathon](#121-case-study-aws-agentic-ai-hackathon)
 - [13. The new human skill: problem formulation](#13-the-new-human-skill-problem-formulation)
 - [14. Taking the autoresearch pattern beyond ML](#14-taking-the-autoresearch-pattern-beyond-ml)
 - [15. Practical tips for working with agents](#15-practical-tips-for-working-with-agents)
@@ -990,6 +991,191 @@ The evaluator creates the feedback loop.
 
 The agent can try changes, run the evaluator, observe the score, and iterate.
 
+### 12.1 Case study: AWS Agentic AI Hackathon
+
+A concrete example of this autoresearch pattern showed up in a recent hackathon I attended: the **AWS Agentic AI Hackathon**, where our team won first place.
+
+The surprising part was how little traditional “feature building” was needed.
+
+#### The setup
+
+AWS gave participants a hackathon scenario: build an AI agent chatbot that interfaces with customers for a pet store.
+
+A lot of the infrastructure was already prepared:
+
+- AWS provided a hackathon dashboard/page.
+- The pet store scenario was already defined.
+- The RAG knowledge bases were already set up.
+- Two PDFs had already been loaded into the knowledge base:
+  - Pet store product information
+  - Pet care knowledge
+- Tool calls were already implemented as AWS Lambda functions.
+
+So our job was not to build the whole stack from scratch.
+
+Our job was mainly to configure the agent well:
+
+- Write and refine the system prompt
+- Set appropriate guardrails
+- Deploy the agent
+- Submit the deployed agent ID and alias ID into AWS’s evaluation dashboard
+- Iterate based on scores
+
+#### The hidden evaluator
+
+AWS had an eval set containing different prompt messages to test how robust the agent was.
+
+The dashboard would run the hidden eval set against our deployed agent and score the agent’s responses.
+
+The maximum score was **1000 points**.
+
+This is exactly the gamified scoring-function setup:
+
+```text
+System prompt + guardrails + deployed agent = editable playground
+Hidden eval set + score = immutable evaluator
+```
+
+That is the autoresearch pattern in miniature.
+
+The agent had a playground where it could try different system prompts and guardrails. Each iteration produced a feedback signal: the score on the eval dashboard.
+
+#### The human as “PhD advisor”
+
+Karpathy describes the human role as something closer to a **PhD advisor**.
+
+That was exactly how this felt.
+
+I did not need to manually optimize every detail. I mainly gave direction:
+
+- “Let’s try implementing a calculator tool call to do valid math.”
+- “Let’s try using a structured JSON outputs library to force structured outputs.”
+- “Let’s optimize the system prompt and guardrails.”
+- “Here is the latest score. Iterate from this.”
+
+Interestingly, not every “smarter” idea helped.
+
+The calculator tool call did not improve the score.
+
+The structured JSON output enforcement also regressed performance, which was strange but useful feedback.
+
+The low-hanging fruit was much simpler: system prompt optimization and guardrail tuning.
+
+That was enough to climb the leaderboard.
+
+#### Score progression
+
+The score moved roughly like this:
+
+```text
+350 → 500 → 350 → 600
+```
+
+It was not a smooth climb.
+
+That is worth noticing. Agentic iteration is still experimental. Some ideas regress. Some improvements come from boring prompt and guardrail changes rather than fancy tool additions.
+
+#### What I had to do as the human operator
+
+The human work was mostly setup and feedback-loop management:
+
+1. Set up `.env` variables for the AWS CLI.
+2. Give Claude Code enough AWS access to push/deploy code.
+3. Ask Claude Code to report the deployed AWS agent ID and alias ID.
+4. Enter the agent ID and alias ID into the AWS eval dashboard.
+5. Run the eval.
+6. Feed the score back to Claude Code.
+7. Ask it to iterate.
+
+The only required dashboard inputs were the deployed agent ID and alias ID.
+
+That was the bridge between the agent-building environment and AWS’s hidden evaluator.
+
+#### Creating the context folder
+
+The first thing I did was create a `context/` folder.
+
+AWS had provided a lot of useful details on the hackathon dashboard, including writeups about:
+
+- Business rules
+- Evaluation set
+- Sample messages
+- Enterprise system
+- Overall scenario
+
+I copied those page writeups wholesale into markdown files inside the `context/` folder.
+
+That gave Claude Code durable context about what it was building.
+
+Instead of relying on one chat to remember the entire scenario, the context lived in files.
+
+That is the same markdown-knowledge-base pattern discussed earlier.
+
+#### First Claude Code prompt
+
+My first prompt to Claude Code was:
+
+```text
+Read through the context folder and brainstorm with me on how we can create the pet store customer agent to do well on the sample eval set given to us.
+```
+
+This immediately kicked off the Superpowers workflow.
+
+Claude Code led the process through:
+
+- Brainstorming
+- Planning
+- Subagent-driven implementation
+- Code scaffolding
+
+That produced the first working version.
+
+#### Fast mode and time pressure
+
+Because the hackathon was only two hours, I used `/fast` mode.
+
+This made Claude Code answer faster, but it also burned tokens faster.
+
+After the first SDLC-style pass, I stopped leaning heavily on Superpowers for later iterations because:
+
+1. Time was limited.
+2. The more complex code changes were not clearly helping.
+3. Low-hanging fruit from prompt and guardrail optimization was faster.
+
+This was probably why the calculator tool and structured JSON output attempts did not turn out well. There was not enough time to properly design, test, and integrate those ideas.
+
+#### Why this example matters
+
+This hackathon was a small but very clear example of autoresearch in practice.
+
+The pattern was:
+
+```text
+Goal: Build the best pet store customer agent
+Editable surface: system prompt, guardrails, deployment code
+Evaluator: AWS hidden eval set
+Feedback signal: score out of 1000
+Human role: advisor/operator giving direction and constraints
+Agent role: experimenter implementing and iterating
+```
+
+The important lesson:
+
+> With a gamified scoring function, agents can autonomously experiment, try different things, take direction from humans, and brute-force toward better solutions through feedback signals.
+
+In this case, the human contribution was not writing all the code.
+
+It was:
+
+- Setting up environment variables
+- Creating the context folder
+- Running one SDLC workflow round
+- Entering the deployed agent details into the eval dashboard
+- Feeding the score back to the agent
+- Steering the next iteration
+
+That is the autoresearch mental model applied outside pure ML training.
+
 ---
 
 ## 13. The new human skill: problem formulation
@@ -1363,6 +1549,10 @@ Design workflows that let agents repeatedly complete tasks well.
 ---
 
 ## 19. Links and resources
+
+### This repo
+
+- Presentation deck — https://jtz18.github.io/agentic-engineering-sharing/
 
 ### Agentic coding and workflow plugins
 
