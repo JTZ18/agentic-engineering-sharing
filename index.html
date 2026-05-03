@@ -158,8 +158,34 @@ health-brief: analyze recovery and training load</div></div><div class="card tal
     <div class="card tall"><h3>Our controllable variables</h3><p>System prompt, guardrails, deployment config, and a few attempted tool/format changes.</p></div>
     <div class="card tall"><h3>The score function</h3><p>A hidden eval dashboard scored robustness across customer messages. Max score: <b>1000</b>.</p></div>
   </div>
-  <div class="flow fragment" style="margin-top:76px"><div class="step">350</div><div class="arrow">→</div><div class="step">500</div><div class="arrow">→</div><div class="step">350</div><div class="arrow">→</div><div class="step">600</div></div>
-  <p class="big fragment" style="margin-top:58px">That is autoresearch: give the agent a playground, a score, and iteration loops.</p><div class="num">25 / 30</div>
+  <div class="fragment" style="margin-top:58px;background:var(--ivory);border:1px solid var(--border);border-radius:24px;padding:22px 28px 18px;box-shadow:0 18px 48px rgba(20,20,19,.045)">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:8px">
+      <div><h3>Eval score over iterations</h3><p style="font-size:19px;color:var(--muted);margin-top:6px">Max possible score: 1000</p></div>
+      <div style="font:600 38px/1 var(--sans);color:var(--terra)">+250 pts</div>
+    </div>
+    <svg viewBox="0 0 1500 320" width="100%" height="250" role="img" aria-label="Hackathon eval score chart showing scores 350, 500, 350, and 600 across four iterations">
+      <defs>
+        <linearGradient id="scoreFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#c96442" stop-opacity=".24"/><stop offset="1" stop-color="#c96442" stop-opacity=".03"/></linearGradient>
+        <filter id="scoreShadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#141413" flood-opacity=".14"/></filter>
+      </defs>
+      <g font-family="Inter, ui-sans-serif, system-ui" font-size="19" fill="#7b756b">
+        <line x1="90" y1="36" x2="90" y2="266" stroke="#d6d1c5" stroke-width="2"/>
+        <line x1="90" y1="266" x2="1416" y2="266" stroke="#d6d1c5" stroke-width="2"/>
+        <line x1="90" y1="151" x2="1416" y2="151" stroke="#d6d1c5" stroke-width="1.5" stroke-dasharray="8 10" opacity=".65"/>
+        <line x1="90" y1="36" x2="1416" y2="36" stroke="#d6d1c5" stroke-width="1.5" stroke-dasharray="8 10" opacity=".5"/>
+        <text x="64" y="272" text-anchor="end">0</text><text x="64" y="157" text-anchor="end">500</text><text x="64" y="42" text-anchor="end">1000</text>
+      </g>
+      <path d="M170 185.5 L570 151 L970 185.5 L1370 128" fill="none" stroke="#c96442" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#scoreShadow)"/>
+      <path d="M170 185.5 L570 151 L970 185.5 L1370 128 L1370 266 L170 266 Z" fill="url(#scoreFill)"/>
+      <g font-family="Inter, ui-sans-serif, system-ui" text-anchor="middle">
+        <g><circle cx="170" cy="185.5" r="15" fill="#c96442"/><text x="170" y="158" font-size="32" font-weight="700" fill="#141413">350</text><text x="170" y="302" font-size="20" fill="#7b756b">baseline</text></g>
+        <g><circle cx="570" cy="151" r="15" fill="#c96442"/><text x="570" y="123" font-size="32" font-weight="700" fill="#141413">500</text><text x="570" y="302" font-size="20" fill="#7b756b">prompt v1</text></g>
+        <g><circle cx="970" cy="185.5" r="15" fill="#9b6b5a"/><text x="970" y="226" font-size="32" font-weight="700" fill="#141413">350</text><text x="970" y="302" font-size="20" fill="#7b756b">tool experiment</text></g>
+        <g><circle cx="1370" cy="128" r="17" fill="#c96442"/><text x="1370" y="100" font-size="36" font-weight="800" fill="#c96442">600</text><text x="1370" y="302" font-size="20" fill="#7b756b">guardrails tuned</text></g>
+      </g>
+    </svg>
+  </div>
+  <p class="big fragment" style="margin-top:38px">That is autoresearch: give the agent a playground, a score, and iteration loops.</p><div class="num">25 / 30</div>
 </section>
 
 <section class="slide" data-notes="Walk through the autoresearch loop in practice. First, copy the hackathon dashboard writeups into a context folder: business rules, evaluation set, sample messages, enterprise system, scenario. Prompt Claude Code to read context and brainstorm. Superpowers kicked off brainstorming, planning, and subagent implementation. Then fast iterations optimized prompt/guardrails using score feedback. Started at 350, then 500, down to 350, up to 600. Calculator tool and structured JSON output experiments regressed; simple prompt and guardrail tuning worked. Human role was the PhD advisor: suggest ideas, feed back scores, keep the loop moving.">
