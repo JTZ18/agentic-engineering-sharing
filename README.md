@@ -529,6 +529,7 @@ These are useful because they show the range of workflows people are already pac
 - [VoltAgent Awesome Agent Skills](https://github.com/VoltAgent/awesome-agent-skills)
 - [K-Dense AI Scientific Agent Skills](https://github.com/K-Dense-AI/scientific-agent-skills)
 - [Addy Osmani Agent Skills](https://github.com/addyosmani/agent-skills)
+- [Agency Agents](https://github.com/msitarzewski/agency-agents)
 
 The point is not to copy everything wholesale.
 
@@ -1629,6 +1630,7 @@ Design workflows that let agents repeatedly complete tasks well.
 - VoltAgent Awesome Agent Skills — https://github.com/VoltAgent/awesome-agent-skills
 - K-Dense AI Scientific Agent Skills — https://github.com/K-Dense-AI/scientific-agent-skills
 - Addy Osmani Agent Skills — https://github.com/addyosmani/agent-skills
+- Agency Agents — https://github.com/msitarzewski/agency-agents
 
 ### Non-software skill examples
 
