@@ -520,6 +520,30 @@ Garry Tan’s `gstack` is interesting because it packages startup-building knowl
 
 That makes a version of YC-level guidance more accessible to anyone who can run the workflow.
 
+### Skill libraries and inspiration repos
+
+If you want to explore what is already possible, browse existing skill/plugin collections.
+
+These are useful because they show the range of workflows people are already packaging:
+
+- [VoltAgent Awesome Agent Skills](https://github.com/VoltAgent/awesome-agent-skills)
+- [K-Dense AI Scientific Agent Skills](https://github.com/K-Dense-AI/scientific-agent-skills)
+- [Addy Osmani Agent Skills](https://github.com/addyosmani/agent-skills)
+
+The point is not to copy everything wholesale.
+
+The point is to study the shape of the workflows:
+
+- What tasks are people automating?
+- How are they writing the SOPs?
+- What tools do the skills assume?
+- What verification steps do they include?
+- What domains are still underserved?
+
+There is a lot of room to innovate here. Most repeated knowledge work has not yet been turned into durable agent workflows.
+
+That is the opportunity.
+
 ---
 
 ## 11. Personal workflow examples
@@ -1599,6 +1623,12 @@ Design workflows that let agents repeatedly complete tasks well.
 - Get Shit Done / GSD — https://github.com/gsd-build/get-shit-done
 - BMAD — Breakthrough Method for Agile Development — https://github.com/bmad-code-org/BMAD-METHOD
 - oh-my-claude-code — https://github.com/yeachan-heo/oh-my-claudecode
+
+### Skill libraries and inspiration
+
+- VoltAgent Awesome Agent Skills — https://github.com/VoltAgent/awesome-agent-skills
+- K-Dense AI Scientific Agent Skills — https://github.com/K-Dense-AI/scientific-agent-skills
+- Addy Osmani Agent Skills — https://github.com/addyosmani/agent-skills
 
 ### Non-software skill examples
 
