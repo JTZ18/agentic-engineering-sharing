@@ -222,6 +222,8 @@ health-brief: analyze recovery and training load</div></div><div class="card tal
     <p class="kicker" style="margin-top:18px;max-width:none;color:var(--terra)">https://github.com/microsoft/playwright-cli</p>
   </div>
   <p class="big fragment" style="margin-top:58px">This is especially good for web QA, shopping research, form flows, and teaching platform-specific browser skills.</p><div class="num">29 / 31</div>
+</section>
+
 <section class="slide" data-notes="Tip: Start with a strong CLAUDE.md or AGENTS.md file. This is the system prompt that loads into every session. Karpathy published a great example that demonstrates how to structure project context, conventions, and preferences for coding agents. A well-crafted CLAUDE.md gives the agent accurate context from the first message instead of rediscovering it every session.">
   <div class="eyebrow">PRACTICAL TIP</div>
   <h2>Start with a strong CLAUDE.md file.</h2>
@@ -247,8 +249,6 @@ health-brief: analyze recovery and training load</div></div><div class="card tal
   <div class="num">30 / 31</div>
 </section>
 
-</section>
-
 <section class="slide" data-notes="Tip 3: For memory/context, use files. CLAUDE.md for Claude Code, AGENTS.md for other harnesses. For broader memory/context, save markdown files. Sales account research can be organized as markdown. Knowledge bases and memory are commonly becoming markdown files — connect this to Karpathy LLM Wiki v1/v2.">
   <div class="eyebrow">Tip 3</div><h2>If you need memory, write files.</h2><p class="subtitle">Agent memory is increasingly file-based: markdown, specs, wikis, and project instructions.</p><div class="grid cols3 stagger" style="margin-top:92px"><div class="card tall"><h3>CLAUDE.md</h3><p>Project/session instructions loaded by Claude Code.</p></div><div class="card tall"><h3>AGENTS.md</h3><p>General agent instruction file used by other harnesses.</p></div><div class="card tall"><h3>Markdown knowledge base</h3><p>Sales accounts, research notes, meeting prep, LLM Wiki pages.</p></div></div><p class="kicker fragment" style="margin-top:70px;text-align:center;max-width:none;color:var(--terra)">LLM Wiki: karpathy v1 + rohitg00 v2</p><div class="num">31 / 31</div>
 </section>
@@ -257,7 +257,7 @@ health-brief: analyze recovery and training load</div></div><div class="card tal
   <div class="eyebrow">Tip 4 + closing challenge</div><h2>Scope your skills deliberately.</h2><p class="subtitle">Some skills should be global. Some should live only inside a project repo.</p><div class="grid cols3 stagger" style="margin-top:86px"><div class="card tall"><h3>Global skill</h3><p>Saved by default in places like <code>~/.claude/skills</code>. Useful everywhere.</p></div><div class="card tall"><h3>Project skill</h3><p>Saved inside the repo, e.g. <code>.claude/</code>, when the workflow belongs to that project.</p></div><div class="card tall"><h3>Shared skill</h3><p>Repo folders like <code>.claude</code>, <code>.codex</code>, <code>.openclaw</code> make workflows portable.</p></div></div><div class="quote fragment" style="font-size:48px;margin:70px 0 0 58px">The winners will be the people who understand their workflows deeply enough to teach them to machines.</div>
 </section>
 
-</main></div><div class="controls"><button id="prev">←</button><span id="counter">1 / 28</span><button id="next">→</button><button id="notesBtn">Notes</button><button id="fsBtn">⛶</button></div><div class="progress" id="progress"></div><aside class="notes" id="notes"><h4>Speaker notes</h4><p id="notesText"></p></aside>
+</main></div><div class="controls"><button id="prev">←</button><span id="counter">1 / 31</span><button id="next">→</button><button id="notesBtn">Notes</button><button id="fsBtn">⛶</button></div><div class="progress" id="progress"></div><aside class="notes" id="notes"><h4>Speaker notes</h4><p id="notesText"></p></aside>
 <script>
 (() => {
  const deck=document.getElementById('deck'), slides=[...document.querySelectorAll('.slide')], counter=document.getElementById('counter'), progress=document.getElementById('progress'), notes=document.getElementById('notes'), notesText=document.getElementById('notesText');
